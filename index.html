@@ -16,7 +16,7 @@
   <script type="module">
 
     import {downloadBuffer} from "https://kairuz.github.io/acyoustic/sample-utils.js";
-    import {SAMPLE_MODELS} from "./projects/lambda-project.js";
+    import {sampleNames, sampleModels} from "./projects/lambda-project.js";
     import {Scheduler, SchedulerCallbacks} from "./scheduler.js";
     import BarDescriptorProducer from "./bar-descriptor-producer.js";
 
@@ -28,9 +28,7 @@
       const visualsDiv = document.getElementById('visuals');
       const audioContext = new AudioContext();
 
-      const sampleNames = Object.keys(SAMPLE_MODELS);
-
-      const sampleBuffersPromise = Promise.all(Object.entries(SAMPLE_MODELS).map(([sampleName, {path}]) => {
+      const sampleBuffersPromise = Promise.all(Object.entries(sampleModels).map(([sampleName, {path}]) => {
         return downloadBuffer(audioContext, path);
       }));
 
