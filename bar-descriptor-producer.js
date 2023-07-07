@@ -1,4 +1,4 @@
-import {SAMPLING_DESCRIPTORS, BAR_DESCRIPTORS} from "./projects/lambda-project.js";
+import {samplingDescriptors, barDescriptors} from "./projects/lambda-project.js";
 
 
 class BarDescriptorProducer {
@@ -7,15 +7,15 @@ class BarDescriptorProducer {
   #currIndex;
 
   constructor() {
-    this.#earliestSamplingOffset = SAMPLING_DESCRIPTORS.reduce((acc, elem) => Math.min(acc, elem.offset), 0);
+    this.#earliestSamplingOffset = samplingDescriptors.reduce((acc, elem) => Math.min(acc, elem.offset), 0);
     this.#currIndex = 0;
   }
 
   produce() {
 
-    const produced = BAR_DESCRIPTORS[this.#currIndex++];
+    const produced = barDescriptors[this.#currIndex++];
 
-    if (this.#currIndex === BAR_DESCRIPTORS.length) {
+    if (this.#currIndex === barDescriptors.length) {
       this.#currIndex = 0;
     }
 

@@ -7,19 +7,14 @@
     }
 
   </style>
-  <script>
-
-    let pSampleBuffers = null;
-    let pScheduler = null;
-    let pBarUis = null;
-  </script>
   <script type="module">
 
     import {downloadBuffer} from "https://kairuz.github.io/acyoustic/sample-utils.js";
-    import {SAMPLE_MODELS} from "./projects/lambda-project.js";
+    import {sampleNames, sampleModels} from "./projects/lambda-project.js";
     import {Scheduler, SchedulerCallbacks} from "./scheduler.js";
     import BarDescriptorProducer from "./bar-descriptor-producer.js";
 
+    let scheduler = null;
 
     const barDescriptorProducer = new BarDescriptorProducer();
 
@@ -28,9 +23,7 @@
       const visualsDiv = document.getElementById('visuals');
       const audioContext = new AudioContext();
 
-      const sampleNames = Object.keys(SAMPLE_MODELS);
-
-      const sampleBuffersPromise = Promise.all(Object.entries(SAMPLE_MODELS).map(([sampleName, {path}]) => {
+      const sampleBuffersPromise = Promise.all(Object.entries(sampleModels).map(([sampleName, {path}]) => {
         return downloadBuffer(audioContext, path);
       }));
 
@@ -170,7 +163,6 @@
             };
 
             const barUis = new Map();
-            pBarUis = barUis;
             const schedulerCallbacks = new SchedulerCallbacks(
                 (bar, samplings) => {
                   console.log(`bar ${bar.id} samplings ${samplings.map((sampling) => sampling.id).join(',')} scheduled`);
@@ -210,11 +202,8 @@
                 },
             );
 
-            pSampleBuffers = sampleBuffers;
-
             stopScheduler();
-            const scheduler = new Scheduler(audioContext, barDescriptorProducer, sampleNames, sampleBuffers, schedulerCallbacks);
-            pScheduler = scheduler;
+            scheduler = new Scheduler(audioContext, barDescriptorProducer, sampleNames, sampleBuffers, schedulerCallbacks);
           })
           .catch((err) => {
             console.log('err ', err);
@@ -225,7 +214,7 @@
 
 
     const stopScheduler = () => {
-      pScheduler?.stop();
+      scheduler?.stop();
       const visualsDiv = document.getElementById('visuals');
       while (visualsDiv.firstChild) {
         visualsDiv.removeChild(visualsDiv.firstChild);

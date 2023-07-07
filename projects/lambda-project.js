@@ -1,296 +1,318 @@
 import {SamplingDescriptor, BarDescriptor} from "../domain.js";
 
 
-const SAMPLE_DRUMS_CRASH              = "crash";
-const SAMPLE_DRUMS_HIHAT              = "hihat";
-const SAMPLE_DRUMS_HIHAT_OPEN         = "hihat (open)";
-const SAMPLE_DRUMS_SNARE              = "snare";
-const SAMPLE_DRUMS_KICK               = "kick";
-const SAMPLE_GUITAR_CHORUS_A_RIFF_A_A = "guitar (chorusA-riffA-A)";
-const SAMPLE_GUITAR_CHORUS_A_RIFF_A_B = "guitar (chorusA-riffA-B)";
-const SAMPLE_GUITAR_CHORUS_A_RIFF_A_C = "guitar (chorusA-riffA-C)";
-const SAMPLE_GUITAR_CHORUS_A_RIFF_A_D = "guitar (chorusA-riffA-D)";
-const SAMPLE_GUITAR_CHORUS_A_RIFF_B_A = "guitar (chorusA-riffB-A)";
-const SAMPLE_GUITAR_CHORUS_A_RIFF_B_B = "guitar (chorusA-riffB-B)";
-const SAMPLE_GUITAR_CHORUS_A_RIFF_B_C = "guitar (chorusA-riffB-C)";
-const SAMPLE_GUITAR_CHORUS_A_RIFF_B_D = "guitar (chorusA-riffB-D)";
-const SAMPLE_GUITAR_CHORUS_A_RIFF_C_A = "guitar (chorusA-riffC-A)";
-const SAMPLE_GUITAR_CHORUS_A_RIFF_C_B = "guitar (chorusA-riffC-B)";
-const SAMPLE_GUITAR_CHORUS_A_RIFF_C_C = "guitar (chorusA-riffC-C)";
-const SAMPLE_GUITAR_CHORUS_A_RIFF_C_D = "guitar (chorusA-riffC-D)";
+const sampleNameDrumsCrash            = "crash";
+const sampleNameDrumsHihat            = "hihat";
+const sampleNameDrumsHihatOpen        = "hihat (open)";
+const sampleNameDrumsSnare            = "snare";
+const sampleNameDrumsKick             = "kick";
+const sampleNameGuitarChorusARiffA_A  = "guitar (chorusA-riffA-A)";
+const sampleNameGuitarChorusARiffA_B  = "guitar (chorusA-riffA-B)";
+const sampleNameGuitarChorusARiffA_C  = "guitar (chorusA-riffA-C)";
+const sampleNameGuitarChorusARiffA_D  = "guitar (chorusA-riffA-D)";
+const sampleNameGuitarChorusARiffB_A  = "guitar (chorusA-riffB-A)";
+const sampleNameGuitarChorusARiffB_B  = "guitar (chorusA-riffB-B)";
+const sampleNameGuitarChorusARiffB_C  = "guitar (chorusA-riffB-C)";
+const sampleNameGuitarChorusARiffB_D  = "guitar (chorusA-riffB-D)";
+const sampleNameGuitarChorusARiffC_A  = "guitar (chorusA-riffC-A)";
+const sampleNameGuitarChorusARiffC_B  = "guitar (chorusA-riffC-B)";
+const sampleNameGuitarChorusARiffC_C  = "guitar (chorusA-riffC-C)";
+const sampleNameGuitarChorusARiffC_D  = "guitar (chorusA-riffC-D)";
 
+const sampleNames = [
+  sampleNameDrumsCrash,
+  sampleNameDrumsHihat,
+  sampleNameDrumsHihatOpen,
+  sampleNameDrumsSnare,
+  sampleNameDrumsKick,
+  sampleNameGuitarChorusARiffA_A,
+  sampleNameGuitarChorusARiffA_B,
+  sampleNameGuitarChorusARiffA_C,
+  sampleNameGuitarChorusARiffA_D,
+  sampleNameGuitarChorusARiffB_A,
+  sampleNameGuitarChorusARiffB_B,
+  sampleNameGuitarChorusARiffB_C,
+  sampleNameGuitarChorusARiffB_D,
+  sampleNameGuitarChorusARiffC_A,
+  sampleNameGuitarChorusARiffC_B,
+  sampleNameGuitarChorusARiffC_C,
+  sampleNameGuitarChorusARiffC_D
+];
 
-const SAMPLE_MODELS = {
-  [SAMPLE_DRUMS_CRASH]: {
+const sampleModels = {
+  [sampleNameDrumsCrash]: {
     "path": "https://kairuz.github.io/assets/audio/samples/drums-crash.ogg"
   },
-  [SAMPLE_DRUMS_HIHAT]: {
+  [sampleNameDrumsHihat]: {
     "path": "https://kairuz.github.io/assets/audio/samples/drums-hihat.ogg"
   },
-  [SAMPLE_DRUMS_HIHAT_OPEN]: {
+  [sampleNameDrumsHihatOpen]: {
     "path": "https://kairuz.github.io/assets/audio/samples/drums-hihat-open.ogg"
   },
-  [SAMPLE_DRUMS_SNARE]: {
+  [sampleNameDrumsSnare]: {
     "path": "https://kairuz.github.io/assets/audio/samples/drums-snare.ogg"
   },
-  [SAMPLE_DRUMS_KICK]: {
+  [sampleNameDrumsKick]: {
     "path": "https://kairuz.github.io/assets/audio/samples/drums-kick.ogg"
   },
-  [SAMPLE_GUITAR_CHORUS_A_RIFF_A_A]: {
+  [sampleNameGuitarChorusARiffA_A]: {
     "path": "https://kairuz.github.io/collage/assets/audio/samples/lambda/lambda-guitar-11-8-110bpm-chorusA-riffA-A.ogg"
   },
-  [SAMPLE_GUITAR_CHORUS_A_RIFF_A_B]: {
+  [sampleNameGuitarChorusARiffA_B]: {
     "path": "https://kairuz.github.io/collage/assets/audio/samples/lambda/lambda-guitar-11-8-110bpm-chorusA-riffA-B.ogg"
   },
-  [SAMPLE_GUITAR_CHORUS_A_RIFF_A_C]: {
+  [sampleNameGuitarChorusARiffA_C]: {
     "path": "https://kairuz.github.io/collage/assets/audio/samples/lambda/lambda-guitar-11-8-110bpm-chorusA-riffA-C.ogg"
   },
-  [SAMPLE_GUITAR_CHORUS_A_RIFF_A_D]: {
+  [sampleNameGuitarChorusARiffA_D]: {
     "path": "https://kairuz.github.io/collage/assets/audio/samples/lambda/lambda-guitar-11-8-110bpm-chorusA-riffA-D.ogg"
   },
-  [SAMPLE_GUITAR_CHORUS_A_RIFF_B_A]: {
+  [sampleNameGuitarChorusARiffB_A]: {
     "path": "https://kairuz.github.io/collage/assets/audio/samples/lambda/lambda-guitar-11-8-110bpm-chorusA-riffB-A.ogg"
   },
-  [SAMPLE_GUITAR_CHORUS_A_RIFF_B_B]: {
+  [sampleNameGuitarChorusARiffB_B]: {
     "path": "https://kairuz.github.io/collage/assets/audio/samples/lambda/lambda-guitar-11-8-110bpm-chorusA-riffB-B.ogg"
   },
-  [SAMPLE_GUITAR_CHORUS_A_RIFF_B_C]: {
+  [sampleNameGuitarChorusARiffB_C]: {
     "path": "https://kairuz.github.io/collage/assets/audio/samples/lambda/lambda-guitar-11-8-110bpm-chorusA-riffB-C.ogg"
   },
-  [SAMPLE_GUITAR_CHORUS_A_RIFF_B_D]: {
+  [sampleNameGuitarChorusARiffB_D]: {
     "path": "https://kairuz.github.io/collage/assets/audio/samples/lambda/lambda-guitar-11-8-110bpm-chorusA-riffB-D.ogg"
   },
-  [SAMPLE_GUITAR_CHORUS_A_RIFF_C_A]: {
+  [sampleNameGuitarChorusARiffC_A]: {
     "path": "https://kairuz.github.io/collage/assets/audio/samples/lambda/lambda-guitar-11-8-110bpm-chorusA-riffC-A.ogg"
   },
-  [SAMPLE_GUITAR_CHORUS_A_RIFF_C_B]: {
+  [sampleNameGuitarChorusARiffC_B]: {
     "path": "https://kairuz.github.io/collage/assets/audio/samples/lambda/lambda-guitar-11-8-110bpm-chorusA-riffC-B.ogg"
   },
-  [SAMPLE_GUITAR_CHORUS_A_RIFF_C_C]: {
+  [sampleNameGuitarChorusARiffC_C]: {
     "path": "https://kairuz.github.io/collage/assets/audio/samples/lambda/lambda-guitar-11-8-110bpm-chorusA-riffC-C.ogg"
   },
-  [SAMPLE_GUITAR_CHORUS_A_RIFF_C_D]: {
+  [sampleNameGuitarChorusARiffC_D]: {
     "path": "https://kairuz.github.io/collage/assets/audio/samples/lambda/lambda-guitar-11-8-110bpm-chorusA-riffC-D.ogg"
   },
 
 };
 
-const STANDARD_BEAT_NOTE  = 1/4; // quarter note beats assumed for bpm measurement
+const standardBeatNote  = 1/4; // quarter note beats assumed for bpm measurement
 
-const BEATS_PER_MINUTE    = 110; // 1 quarter note = 1 beat; 110 quarter notes (220 eighth notes) per minute
-const NOTES_PER_BAR       = 11;
-const NOTE_TYPE           = 1/8; // song is in 11/8 time (eleven eighth notes per bar)
-const BEATS_PER_NOTE      = STANDARD_BEAT_NOTE / NOTE_TYPE;
-const BEATS_PER_BAR       = NOTES_PER_BAR * BEATS_PER_NOTE;
-const BEAT_LENGTH_MILLIS  = (60000 / BEATS_PER_MINUTE) * (NOTE_TYPE / STANDARD_BEAT_NOTE);
-const NOTE_LENGTH_MILLIS  = BEAT_LENGTH_MILLIS * BEATS_PER_NOTE;
-const BAR_LENGTH_MILLIS   = NOTE_LENGTH_MILLIS * NOTES_PER_BAR;
-const BAR_LENGTH_SECS     = (NOTE_LENGTH_MILLIS * NOTES_PER_BAR) / 1000;
+const beatsPerMinute    = 110; // 1 quarter note = 1 beat; 110 quarter notes (220 eighth notes) per minute
+const notesPerBar       = 11;
+const noteType           = 1/8; // song is in 11/8 time (eleven eighth notes per bar)
+const beatsPerNote      = standardBeatNote / noteType;
+const beatsPerBar       = notesPerBar * beatsPerNote;
+const beatLengthMillis  = (60000 / beatsPerMinute) * (noteType / standardBeatNote);
+const noteLengthMillis  = beatLengthMillis * beatsPerNote;
+const barLengthMillis   = noteLengthMillis * notesPerBar;
+const barLengthSecs     = (noteLengthMillis * notesPerBar) / 1000;
 
 // 1      &      2      &      3      &      4      &      5      &      6      &      7      &      8      &      9      &      10     &      11     &
-const RHYTHM_DRUMS_KICK =
+const rhythmDrumsKick =
   [0,                                 2.5,                                      5.5,                               8                                         ];
-const RHYTHM_DRUMS_SNARE =
+const rhythmDrumsSnare =
   [                            2,                                 4.5,                                      7.5,                               10            ];
-const RHYTHM_DRUMS_CRASH =
+const rhythmDrumsCrash =
   [0                                                                                                                                                         ];
-const RHYTHM_DRUMS_HIHAT =
+const rhythmDrumsHihat =
   [0,            1,            2,            3,            4,            5,            6,            7,            8,             9,           10            ];
-const RHYTHM_DRUMS_HIHAT_ACCENTED =
+const rhythmDrumsHihatAccented =
   [0,            1,            2,            3,            4,                          6,            7,            8,             9,           10            ];
-const RHYTHM_DRUMS_HIHAT_OPEN =
+const rhythmDrumsHihatOpen =
   [                                                                             5.5                                                                          ];
-const RHYTHM_DRUMS_HIHAT_OPEN_ACCENTED =
+const rhythmDrumsHihatOpenAccented =
   [                                                                      5                                                                                   ];
 
 
-const OFFSETS_KICK                = RHYTHM_DRUMS_KICK.map((note) => note * NOTE_LENGTH_MILLIS);
-const OFFSETS_SNARE               = RHYTHM_DRUMS_SNARE.map((note) => note * NOTE_LENGTH_MILLIS);
-const OFFSETS_CRASH               = RHYTHM_DRUMS_CRASH.map((note) => note * NOTE_LENGTH_MILLIS);
-const OFFSETS_HIHAT               = RHYTHM_DRUMS_HIHAT.map((note) => note * NOTE_LENGTH_MILLIS);
-const OFFSETS_HIHAT_ACCENTED      = RHYTHM_DRUMS_HIHAT_ACCENTED.map((note) => note * NOTE_LENGTH_MILLIS);
-const OFFSETS_HIHAT_OPEN          = RHYTHM_DRUMS_HIHAT_OPEN.map((note) => note * NOTE_LENGTH_MILLIS);
-const OFFSETS_HIHAT_OPEN_ACCENTED = RHYTHM_DRUMS_HIHAT_OPEN_ACCENTED.map((note) => note * NOTE_LENGTH_MILLIS);
+const offsetsKick               = rhythmDrumsKick.map((note) => note * noteLengthMillis);
+const offsetsSnare              = rhythmDrumsSnare.map((note) => note * noteLengthMillis);
+const offsetsCrash              = rhythmDrumsCrash.map((note) => note * noteLengthMillis);
+const offsetsHihat              = rhythmDrumsHihat.map((note) => note * noteLengthMillis);
+const offsetsHihatAccented      = rhythmDrumsHihatAccented.map((note) => note * noteLengthMillis);
+const offsetsHihatOpen          = rhythmDrumsHihatOpen.map((note) => note * noteLengthMillis);
+const offsetsHihatOpenAccented  = rhythmDrumsHihatOpenAccented.map((note) => note * noteLengthMillis);
 
 
-const SAMPLING_DESCRIPTORS_KICK                 = OFFSETS_KICK.map((offset) => new SamplingDescriptor(SAMPLE_DRUMS_KICK, offset));
-const SAMPLING_DESCRIPTORS_SNARE                = OFFSETS_SNARE.map((offset) => new SamplingDescriptor(SAMPLE_DRUMS_SNARE, offset));
-const SAMPLING_DESCRIPTORS_CRASH                = OFFSETS_CRASH.map((offset) => new SamplingDescriptor(SAMPLE_DRUMS_CRASH, offset));
-const SAMPLING_DESCRIPTORS_HIHAT                = OFFSETS_HIHAT.map((offset) => new SamplingDescriptor(SAMPLE_DRUMS_HIHAT, offset));
-const SAMPLING_DESCRIPTORS_HIHAT_ACCENTED       = OFFSETS_HIHAT_ACCENTED.map((offset) => new SamplingDescriptor(SAMPLE_DRUMS_HIHAT, offset));
-const SAMPLING_DESCRIPTORS_HIHAT_OPEN           = OFFSETS_HIHAT_OPEN.map((offset) => new SamplingDescriptor(SAMPLE_DRUMS_HIHAT_OPEN, offset));
-const SAMPLING_DESCRIPTORS_HIHAT_OPEN_ACCENTED  = OFFSETS_HIHAT_OPEN_ACCENTED.map((offset) => new SamplingDescriptor(SAMPLE_DRUMS_HIHAT_OPEN, offset));
+const samplingDescriptorsKick               = offsetsKick.map((offset) => new SamplingDescriptor(sampleNameDrumsKick, offset));
+const samplingDescriptorsSnare              = offsetsSnare.map((offset) => new SamplingDescriptor(sampleNameDrumsSnare, offset));
+const samplingDescriptorsCrash              = offsetsCrash.map((offset) => new SamplingDescriptor(sampleNameDrumsCrash, offset));
+const samplingDescriptorsHihat              = offsetsHihat.map((offset) => new SamplingDescriptor(sampleNameDrumsHihat, offset));
+const samplingDescriptorsHihatAccented      = offsetsHihatAccented.map((offset) => new SamplingDescriptor(sampleNameDrumsHihat, offset));
+const samplingDescriptorsHihatOpen          = offsetsHihatOpen.map((offset) => new SamplingDescriptor(sampleNameDrumsHihatOpen, offset));
+const samplingDescriptorsHihatOpenAccented  = offsetsHihatOpenAccented.map((offset) => new SamplingDescriptor(sampleNameDrumsHihatOpen, offset));
 
 
 
-const SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_A_BAR_A = [
-    new SamplingDescriptor(SAMPLE_GUITAR_CHORUS_A_RIFF_A_A, -3 * NOTE_LENGTH_MILLIS),
-    new SamplingDescriptor(SAMPLE_GUITAR_CHORUS_A_RIFF_A_B, (-3 + 5.5) * NOTE_LENGTH_MILLIS)
+const samplingDescriptorsGuitarChorusARiffABarA = [
+    new SamplingDescriptor(sampleNameGuitarChorusARiffA_A, -3 * noteLengthMillis),
+    new SamplingDescriptor(sampleNameGuitarChorusARiffA_B, (-3 + 5.5) * noteLengthMillis)
 ];
-const SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_A_BAR_B = [
-    new SamplingDescriptor(SAMPLE_GUITAR_CHORUS_A_RIFF_A_C, -3 * NOTE_LENGTH_MILLIS),
-    new SamplingDescriptor(SAMPLE_GUITAR_CHORUS_A_RIFF_A_D, (-3 + 5.5) * NOTE_LENGTH_MILLIS)
+const samplingDescriptorsGuitarChorusARiffABarB = [
+    new SamplingDescriptor(sampleNameGuitarChorusARiffA_C, -3 * noteLengthMillis),
+    new SamplingDescriptor(sampleNameGuitarChorusARiffA_D, (-3 + 5.5) * noteLengthMillis)
 ];
-
-const SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_B_BAR_A = [
-  new SamplingDescriptor(SAMPLE_GUITAR_CHORUS_A_RIFF_B_A, -3 * NOTE_LENGTH_MILLIS),
-  new SamplingDescriptor(SAMPLE_GUITAR_CHORUS_A_RIFF_B_B, (-3 + 5.5) * NOTE_LENGTH_MILLIS)
+const samplingDescriptorsGuitarChorusARiffBBarA = [
+  new SamplingDescriptor(sampleNameGuitarChorusARiffB_A, -3 * noteLengthMillis),
+  new SamplingDescriptor(sampleNameGuitarChorusARiffB_B, (-3 + 5.5) * noteLengthMillis)
 ];
-const SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_B_BAR_B = [
-  new SamplingDescriptor(SAMPLE_GUITAR_CHORUS_A_RIFF_B_C, -3 * NOTE_LENGTH_MILLIS),
-  new SamplingDescriptor(SAMPLE_GUITAR_CHORUS_A_RIFF_B_D, (-3 + 5.5) * NOTE_LENGTH_MILLIS)
+const samplingDescriptorsGuitarChorusARiffBBarB = [
+  new SamplingDescriptor(sampleNameGuitarChorusARiffB_C, -3 * noteLengthMillis),
+  new SamplingDescriptor(sampleNameGuitarChorusARiffB_D, (-3 + 5.5) * noteLengthMillis)
 ];
-const SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_C_BAR_A = [
-  new SamplingDescriptor(SAMPLE_GUITAR_CHORUS_A_RIFF_C_A, -3 * NOTE_LENGTH_MILLIS),
-  new SamplingDescriptor(SAMPLE_GUITAR_CHORUS_A_RIFF_C_B, (-3 + 5.5) * NOTE_LENGTH_MILLIS)
+const samplingDescriptorsGuitarChorusARiffCBarA = [
+  new SamplingDescriptor(sampleNameGuitarChorusARiffC_A, -3 * noteLengthMillis),
+  new SamplingDescriptor(sampleNameGuitarChorusARiffC_B, (-3 + 5.5) * noteLengthMillis)
 ];
-const SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_C_BAR_B = [
-  new SamplingDescriptor(SAMPLE_GUITAR_CHORUS_A_RIFF_C_C, -3 * NOTE_LENGTH_MILLIS),
-  new SamplingDescriptor(SAMPLE_GUITAR_CHORUS_A_RIFF_C_D, (-3 + 5.5) * NOTE_LENGTH_MILLIS)
-];
-
-
-
-const SAMPLING_DESCRIPTORS = [
-  ...SAMPLING_DESCRIPTORS_KICK,
-  ...SAMPLING_DESCRIPTORS_SNARE,
-  ...SAMPLING_DESCRIPTORS_CRASH,
-  ...SAMPLING_DESCRIPTORS_HIHAT,
-  ...SAMPLING_DESCRIPTORS_HIHAT_ACCENTED,
-  ...SAMPLING_DESCRIPTORS_HIHAT_OPEN,
-  ...SAMPLING_DESCRIPTORS_HIHAT_OPEN_ACCENTED,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_A_BAR_A,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_A_BAR_B,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_B_BAR_A,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_B_BAR_B,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_C_BAR_A,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_C_BAR_B
+const samplingDescriptorsGuitarChorusARiffCBarB = [
+  new SamplingDescriptor(sampleNameGuitarChorusARiffC_C, -3 * noteLengthMillis),
+  new SamplingDescriptor(sampleNameGuitarChorusARiffC_D, (-3 + 5.5) * noteLengthMillis)
 ];
 
 
 
-const BAR_DESCRIPTOR_A_CHORUS_A_RIFF_A_BAR_A = new BarDescriptor(BAR_LENGTH_MILLIS, [
-  ...SAMPLING_DESCRIPTORS_KICK,
-  ...SAMPLING_DESCRIPTORS_SNARE,
-  ...SAMPLING_DESCRIPTORS_CRASH,
-  ...SAMPLING_DESCRIPTORS_HIHAT,
-  ...SAMPLING_DESCRIPTORS_HIHAT_OPEN,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_A_BAR_A
+const samplingDescriptors = [
+  ...samplingDescriptorsKick,
+  ...samplingDescriptorsSnare,
+  ...samplingDescriptorsCrash,
+  ...samplingDescriptorsHihat,
+  ...samplingDescriptorsHihatAccented,
+  ...samplingDescriptorsHihatOpen,
+  ...samplingDescriptorsHihatOpenAccented,
+  ...samplingDescriptorsGuitarChorusARiffABarA,
+  ...samplingDescriptorsGuitarChorusARiffABarB,
+  ...samplingDescriptorsGuitarChorusARiffBBarA,
+  ...samplingDescriptorsGuitarChorusARiffBBarB,
+  ...samplingDescriptorsGuitarChorusARiffCBarA,
+  ...samplingDescriptorsGuitarChorusARiffCBarB
+];
+
+
+
+const barDescriptorAChorusARiffABarA = new BarDescriptor(barLengthMillis, [
+  ...samplingDescriptorsKick,
+  ...samplingDescriptorsSnare,
+  ...samplingDescriptorsCrash,
+  ...samplingDescriptorsHihat,
+  ...samplingDescriptorsHihatOpen,
+  ...samplingDescriptorsGuitarChorusARiffABarA
 ]);
 
-const BAR_DESCRIPTOR_A_CHORUS_A_RIFF_A_BAR_B = new BarDescriptor(BAR_LENGTH_MILLIS, [
-  ...SAMPLING_DESCRIPTORS_KICK,
-  ...SAMPLING_DESCRIPTORS_SNARE,
-  ...SAMPLING_DESCRIPTORS_CRASH,
-  ...SAMPLING_DESCRIPTORS_HIHAT,
-  ...SAMPLING_DESCRIPTORS_HIHAT_OPEN,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_A_BAR_B
+const barDescriptorAChorusARiffABarB = new BarDescriptor(barLengthMillis, [
+  ...samplingDescriptorsKick,
+  ...samplingDescriptorsSnare,
+  ...samplingDescriptorsCrash,
+  ...samplingDescriptorsHihat,
+  ...samplingDescriptorsHihatOpen,
+  ...samplingDescriptorsGuitarChorusARiffABarB
 ]);
 
-const BAR_DESCRIPTOR_B_CHORUS_A_RIFF_A_BAR_A = new BarDescriptor(BAR_LENGTH_MILLIS, [
-  ...SAMPLING_DESCRIPTORS_KICK,
-  ...SAMPLING_DESCRIPTORS_SNARE,
-  ...SAMPLING_DESCRIPTORS_CRASH,
-  ...SAMPLING_DESCRIPTORS_HIHAT_ACCENTED,
-  ...SAMPLING_DESCRIPTORS_HIHAT_OPEN_ACCENTED,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_A_BAR_A
+const barDescriptorBChorusARiffABarA = new BarDescriptor(barLengthMillis, [
+  ...samplingDescriptorsKick,
+  ...samplingDescriptorsSnare,
+  ...samplingDescriptorsCrash,
+  ...samplingDescriptorsHihatAccented,
+  ...samplingDescriptorsHihatOpenAccented,
+  ...samplingDescriptorsGuitarChorusARiffABarA
 ]);
 
-const BAR_DESCRIPTOR_B_CHORUS_A_RIFF_A_BAR_B = new BarDescriptor(BAR_LENGTH_MILLIS, [
-  ...SAMPLING_DESCRIPTORS_KICK,
-  ...SAMPLING_DESCRIPTORS_SNARE,
-  ...SAMPLING_DESCRIPTORS_CRASH,
-  ...SAMPLING_DESCRIPTORS_HIHAT_ACCENTED,
-  ...SAMPLING_DESCRIPTORS_HIHAT_OPEN_ACCENTED,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_A_BAR_B
+const barDescriptorBChorusARiffABarB = new BarDescriptor(barLengthMillis, [
+  ...samplingDescriptorsKick,
+  ...samplingDescriptorsSnare,
+  ...samplingDescriptorsCrash,
+  ...samplingDescriptorsHihatAccented,
+  ...samplingDescriptorsHihatOpenAccented,
+  ...samplingDescriptorsGuitarChorusARiffABarB
 ]);
 
-const BAR_DESCRIPTOR_C_CHORUS_A_RIFF_B_BAR_A = new BarDescriptor(BAR_LENGTH_MILLIS, [
-  ...SAMPLING_DESCRIPTORS_KICK,
-  ...SAMPLING_DESCRIPTORS_SNARE,
-  ...SAMPLING_DESCRIPTORS_CRASH,
-  ...SAMPLING_DESCRIPTORS_HIHAT,
-  ...SAMPLING_DESCRIPTORS_HIHAT_OPEN,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_B_BAR_A
+const barDescriptorCChorusARiffBBarA = new BarDescriptor(barLengthMillis, [
+  ...samplingDescriptorsKick,
+  ...samplingDescriptorsSnare,
+  ...samplingDescriptorsCrash,
+  ...samplingDescriptorsHihat,
+  ...samplingDescriptorsHihatOpen,
+  ...samplingDescriptorsGuitarChorusARiffBBarA
 ]);
 
-const BAR_DESCRIPTOR_C_CHORUS_A_RIFF_B_BAR_B = new BarDescriptor(BAR_LENGTH_MILLIS, [
-  ...SAMPLING_DESCRIPTORS_KICK,
-  ...SAMPLING_DESCRIPTORS_SNARE,
-  ...SAMPLING_DESCRIPTORS_CRASH,
-  ...SAMPLING_DESCRIPTORS_HIHAT,
-  ...SAMPLING_DESCRIPTORS_HIHAT_OPEN,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_B_BAR_B
-]);
-
-
-const BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_A = new BarDescriptor(BAR_LENGTH_MILLIS, [
-  ...SAMPLING_DESCRIPTORS_KICK,
-  ...SAMPLING_DESCRIPTORS_SNARE,
-  ...SAMPLING_DESCRIPTORS_CRASH,
-  ...SAMPLING_DESCRIPTORS_HIHAT_ACCENTED,
-  ...SAMPLING_DESCRIPTORS_HIHAT_OPEN_ACCENTED,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_C_BAR_A
-]);
-
-const BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_B = new BarDescriptor(BAR_LENGTH_MILLIS, [
-  ...SAMPLING_DESCRIPTORS_KICK,
-  ...SAMPLING_DESCRIPTORS_SNARE,
-  ...SAMPLING_DESCRIPTORS_CRASH,
-  ...SAMPLING_DESCRIPTORS_HIHAT_ACCENTED,
-  ...SAMPLING_DESCRIPTORS_HIHAT_OPEN_ACCENTED,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_C_BAR_B
-]);
-
-
-const BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_C = new BarDescriptor(BAR_LENGTH_MILLIS, [
-  ...SAMPLING_DESCRIPTORS_KICK,
-  ...SAMPLING_DESCRIPTORS_SNARE,
-  ...SAMPLING_DESCRIPTORS_CRASH,
-  ...SAMPLING_DESCRIPTORS_HIHAT_ACCENTED,
-  ...SAMPLING_DESCRIPTORS_HIHAT_OPEN_ACCENTED,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_C_BAR_A,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_A_BAR_A
-]);
-
-const BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_D = new BarDescriptor(BAR_LENGTH_MILLIS, [
-  ...SAMPLING_DESCRIPTORS_KICK,
-  ...SAMPLING_DESCRIPTORS_SNARE,
-  ...SAMPLING_DESCRIPTORS_CRASH,
-  ...SAMPLING_DESCRIPTORS_HIHAT_ACCENTED,
-  ...SAMPLING_DESCRIPTORS_HIHAT_OPEN_ACCENTED,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_C_BAR_B,
-  ...SAMPLING_DESCRIPTOR_GUITAR_CHORUS_A_RIFF_A_BAR_B
+const barDescriptorCChorusARiffBBarB = new BarDescriptor(barLengthMillis, [
+  ...samplingDescriptorsKick,
+  ...samplingDescriptorsSnare,
+  ...samplingDescriptorsCrash,
+  ...samplingDescriptorsHihat,
+  ...samplingDescriptorsHihatOpen,
+  ...samplingDescriptorsGuitarChorusARiffBBarB
 ]);
 
 
+const barDescriptorDChorusARiffCBarA = new BarDescriptor(barLengthMillis, [
+  ...samplingDescriptorsKick,
+  ...samplingDescriptorsSnare,
+  ...samplingDescriptorsCrash,
+  ...samplingDescriptorsHihatAccented,
+  ...samplingDescriptorsHihatOpenAccented,
+  ...samplingDescriptorsGuitarChorusARiffCBarA
+]);
 
-const BAR_DESCRIPTORS = [
+const barDescriptorDChorusARiffCBarB = new BarDescriptor(barLengthMillis, [
+  ...samplingDescriptorsKick,
+  ...samplingDescriptorsSnare,
+  ...samplingDescriptorsCrash,
+  ...samplingDescriptorsHihatAccented,
+  ...samplingDescriptorsHihatOpenAccented,
+  ...samplingDescriptorsGuitarChorusARiffCBarB
+]);
 
-    BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_A, BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_B,
-    BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_A, BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_B,
 
-    BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_C, BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_D,
-    BAR_DESCRIPTOR_A_CHORUS_A_RIFF_A_BAR_A, BAR_DESCRIPTOR_A_CHORUS_A_RIFF_A_BAR_B,
+const barDescriptorDChorusARiffCBarC = new BarDescriptor(barLengthMillis, [
+  ...samplingDescriptorsKick,
+  ...samplingDescriptorsSnare,
+  ...samplingDescriptorsCrash,
+  ...samplingDescriptorsHihatAccented,
+  ...samplingDescriptorsHihatOpenAccented,
+  ...samplingDescriptorsGuitarChorusARiffCBarA,
+  ...samplingDescriptorsGuitarChorusARiffABarA
+]);
 
-    BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_A, BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_B,
-    BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_A, BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_B,
-    BAR_DESCRIPTOR_B_CHORUS_A_RIFF_A_BAR_A, BAR_DESCRIPTOR_B_CHORUS_A_RIFF_A_BAR_B,
-    BAR_DESCRIPTOR_A_CHORUS_A_RIFF_A_BAR_A, BAR_DESCRIPTOR_A_CHORUS_A_RIFF_A_BAR_B,
-    BAR_DESCRIPTOR_C_CHORUS_A_RIFF_B_BAR_A, BAR_DESCRIPTOR_C_CHORUS_A_RIFF_B_BAR_B,
+const barDescriptorDChorusARiffCBarD = new BarDescriptor(barLengthMillis, [
+  ...samplingDescriptorsKick,
+  ...samplingDescriptorsSnare,
+  ...samplingDescriptorsCrash,
+  ...samplingDescriptorsHihatAccented,
+  ...samplingDescriptorsHihatOpenAccented,
+  ...samplingDescriptorsGuitarChorusARiffCBarB,
+  ...samplingDescriptorsGuitarChorusARiffABarB
+]);
 
-    // BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_A, BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_B,
-    // BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_A, BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_B,
 
-    // BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_C, BAR_DESCRIPTOR_D_CHORUS_A_RIFF_C_BAR_D,
-    // BAR_DESCRIPTOR_A_CHORUS_A_RIFF_A_BAR_A, BAR_DESCRIPTOR_A_CHORUS_A_RIFF_A_BAR_B,
+
+const barDescriptors = [
+
+    barDescriptorDChorusARiffCBarA, barDescriptorDChorusARiffCBarB,
+    barDescriptorDChorusARiffCBarA, barDescriptorDChorusARiffCBarB,
+
+    barDescriptorDChorusARiffCBarC, barDescriptorDChorusARiffCBarD,
+    barDescriptorAChorusARiffABarA, barDescriptorAChorusARiffABarB,
+
+    barDescriptorDChorusARiffCBarA, barDescriptorDChorusARiffCBarB,
+    barDescriptorDChorusARiffCBarA, barDescriptorDChorusARiffCBarB,
+    barDescriptorBChorusARiffABarA, barDescriptorBChorusARiffABarB,
+    barDescriptorAChorusARiffABarA, barDescriptorAChorusARiffABarB,
+    barDescriptorCChorusARiffBBarA, barDescriptorCChorusARiffBBarB,
+
+    // barDescriptorDChorusARiffCBarA, barDescriptorDChorusARiffCBarB,
+    // barDescriptorDChorusARiffCBarA, barDescriptorDChorusARiffCBarB,
+
+    // barDescriptorDChorusARiffCBarC, barDescriptorDChorusARiffCBarD,
+    // barDescriptorAChorusARiffABarA, barDescriptorAChorusARiffABarB,
 
 
 ];
 
 
 export {
-  SAMPLE_MODELS,
-  SAMPLING_DESCRIPTORS,
-  BAR_DESCRIPTORS
+  sampleNameDrumsCrash, sampleNameDrumsHihat, sampleNameDrumsHihatOpen, sampleNameDrumsSnare, sampleNameDrumsKick,
+  sampleNameGuitarChorusARiffA_A, sampleNameGuitarChorusARiffA_B, sampleNameGuitarChorusARiffA_C, sampleNameGuitarChorusARiffA_D,
+  sampleNameGuitarChorusARiffB_A, sampleNameGuitarChorusARiffB_B, sampleNameGuitarChorusARiffB_C, sampleNameGuitarChorusARiffB_D,
+  sampleNameGuitarChorusARiffC_A, sampleNameGuitarChorusARiffC_B, sampleNameGuitarChorusARiffC_C, sampleNameGuitarChorusARiffC_D,
+  sampleNames, sampleModels,
+  samplingDescriptors,
+  barDescriptors
 }
