@@ -66,7 +66,6 @@ class Scheduler {
     this.#sampleNames = sampleNames;
     this.#sampleAudioBuffers = sampleAudioBuffers;
     this.#callbacks = callbacks;
-    // this.#timer = new Timer(() => Math.trunc(audioContext.currentTime * 1000));
     this.#timer = new Timer(() => audioContext.currentTime * 1000);
 
     this.#nextBarDescriptor = this.#barDescriptorProducer.produce();
@@ -131,8 +130,6 @@ class Scheduler {
 
       sampleNode.addEventListener('ended', () => {
         const endedTime = this.#timer.currentTime;
-        // console.log(`${endedTime} sampling     ended ${sampling.toIdStr()} ` +
-        //             `seq->end=${Math.trunc(endedTime - sequencedTime)}`);
         this.#callbacks.samplingEnded(bar, sampling);
         this.#startedSamplings.delete(startedSampling);
         const samplingEndedBarTracking = this.#barTrackings.get(bar);
@@ -150,7 +147,6 @@ class Scheduler {
       });
 
       const sequencedTime = this.#timer.currentTime;
-      // console.log(`${sequencedTime} sampling sequenced ${sampling.toIdStr()}`);
 
       const [sampleNodeStartWhen, sampleNodeOffset] =
           sampling.timestamp < 0 ?
